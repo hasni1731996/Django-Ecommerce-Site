@@ -1,0 +1,65 @@
+{% extends "ecommerce/admin/base.html" %}
+{% block content %}
+	<div class="container">
+        {% if context %}
+        <div class="wave-box"></div>
+            <form method="post" action="{% url 'ecommerce:checkout' %}" class="order_create">
+                <div class="row">
+                    <div class="col-sm-12 my-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Orders</h4>
+                            </div>
+                            <div class="card-body">
+								<div class="table-responsive">
+									<table class="table table-striped table-bordered table-hover" id='table_order'>
+                                        <thead>
+                                            <tr>
+                                                <th>User</th>
+                                                <th>Order ID</th>
+                                                <th>Total Amount</th>
+                                                <th>Order Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for item in context %}
+                                                <tr>
+                                                <td>{{item.user.username}}</td>
+                                                    <td>
+                                                        <a href="{% url 'ecommerce:productorder' item.order_id %}" target="_blank">{{item.order_id}}
+                                                        </a>
+                                                    </td>
+                                                    <td><strong>{{ currency }} {{ item.total_amount }}</strong></td>
+                                                    <td>
+                                                        {% comment %} <form method="post" action="{% url 'ecommerce:productorder' %}" class="form-inline">
+                                                            <input type="hidden" name="action" value="edit" />
+                                                            <input type="hidden" name="order_id" value="{{ item.order_id }}" /> {% endcomment %}
+                                                            {% if item.order_status == True %}
+                                                            <p>Approved</p>
+                                                            <input type="hidden" name="order_id" value="{{ item.order_id }}" />
+                                                            {% comment %} <input type="hidden" class="status" name="status" value="{{item.order_status}}" /> {% endcomment %}
+                                                            {% else %}
+                                                            <p>Not Approved</p>
+                                                            <input type="hidden" name="order_id" value="{{ item.order_id }}" />
+                                                            {% comment %} <input type="hidden" class="status" name="status" value="{{item.order_status}}" /> {% endcomment %}
+                                                            {% endif %}
+                                                            {% if user.username == 'admin' %}
+                                                            <button type="button" class="btn btn-primary order_btn"><span class="glyphicon glyphicon-floppy-save"></span> Update</button>
+                                                            {% endif %}
+                                                        {% comment %} </form> {% endcomment %}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+									</table>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            {% else %}
+                <div class="alert alert-danger alert-dismissable">No Orders</div>
+        {% endif %}
+	</div>
+{% endblock %}

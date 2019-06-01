@@ -1,0 +1,125 @@
+                    {% if user.user_name.role == 'ADMIN' %}
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-stethoscope fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">26</div>
+                                            <div>Total Doctors!</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">View Details</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-green">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-user-md fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">12</div>
+                                            <div>Total Medical Persons!</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">View Details</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-yellow">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-users fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                        {% load total_patients_objs from user_template_tags %}
+                                            <div class="huge">{% total_patients_objs %}</div>
+                                            <div>Total Patients!</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="{% url 'view_patients_admin' %}">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">View Details</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="glyphicon glyphicon-th fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">13</div>
+                                            <div> Total Dispensaries!</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">View Details</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                         
+                        <!--User Badges-->
+                        {% elif user.user_name.role == 'USER' %}
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-user fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                        {% load patients_objs from user_template_tags %}
+                                            <div class="huge">{% patients_objs %}</div>
+                                            <div>Today's Total Patients!</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="{% url 'view_patients' %}">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">View Details</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <!--ends-->
+                    </div>
+                    

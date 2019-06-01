@@ -1,0 +1,16 @@
+.field-icon {
+    float: right;
+    margin-right: 8px;
+    margin-top: -23px;
+    position: relative;
+    z-index: 2;
+    cursor:pointer;
+  }
+  
+  .container{
+    padding-top:50px;
+    margin: auto;
+  }
+.raphael-group-21-creditgroup{
+  display: none;
+}

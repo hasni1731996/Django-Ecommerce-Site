@@ -1,0 +1,48 @@
+{% extends "ecommerce/admin/base.html" %}
+{% load humanize %}
+{% load mathfilters %}
+{% block content %}
+	<div class="container">
+    {% if prods %}
+		<h2>Order ID:{{order_id}}</h2>
+		<br />
+			<div class="table-responsive">
+				<table class="table table-bordered">
+					<tr>
+						<th>Items</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						<th>Total</th>
+					</tr>
+					
+					{% for item,qty in prods %}
+						<tr>
+							<td>
+								<a href="{% url 'ecommerce:single_product' item.id %}">
+									<img src="/ecommerce/{{ item.featured_image }}" class="img-responsive img-thumbnail float-left mr-2" width="50">
+									{{ item.name }}
+								</a>
+							</td>
+							<td>{{ currency }} {{item.price}}</td>
+							<td>{{ qty }}</td>
+							<td>{{ currency }} {{ qty|mul:item.price }}</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-6"></div>
+				<div class="col-sm-6">
+					<h3>Cart totals</h3>
+					<table class="table table-bordered">
+						<tr>
+							<th>Total</th>
+							<td>{{ currency }} {{ amount|intcomma }}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}
