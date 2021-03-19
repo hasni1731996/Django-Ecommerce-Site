@@ -29,7 +29,7 @@ django-notify-x==0.1.9
 django-phone-field==1.7.1
 django-redis==4.10.0
 django-tastypie==0.14.2
-djangorestframework==3.7.7
+djangorestframework==3.11.2
 djangorestframework-jwt==1.11.0
 drf-writable-nested==0.5.1
 Faker==0.8.9
